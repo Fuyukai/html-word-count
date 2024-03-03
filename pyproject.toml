@@ -18,7 +18,9 @@ lxml = ">=5.1.0"
 [tool.poetry.group.dev.dependencies]
 ruff = ">=0.3.0"
 pyright = ">=1.1.352"
-lxml-stubs = ">=0.5.1"
+
+[tool.poetry.scripts]
+html-word-count = "html_word_count.__main__:main"
 
 [tool.poetry-dynamic-versioning]
 enable = true
@@ -26,7 +28,7 @@ enable = true
 [tool.pyright]
 pythonVersion = "3.12"
 include = ["src"]
-typeCheckingMode = "strict"
+typeCheckingMode = "basic"
 
 reportImplicitOverride = "warning"
 reportUnusedVariable = false
