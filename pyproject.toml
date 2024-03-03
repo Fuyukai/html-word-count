@@ -1,0 +1,69 @@
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+[tool.poetry]
+name = "html-word-count"
+version = "0.7.0"
+description = "A basic word counter for HTML documents"
+authors = ["Lura Skye <fuyukaii@proton.me>"]
+readme = "README.rst"
+packages = [{include = "html_word_count", from = "src"}]
+license = "GPL-3.0-or-later"
+
+[tool.poetry.dependencies]
+python = ">=3.12"
+lxml = ">=5.1.0"
+
+[tool.poetry.group.dev.dependencies]
+ruff = ">=0.3.0"
+pyright = ">=1.1.352"
+
+[tool.poetry-dynamic-versioning]
+enable = true
+
+[tool.pyright]
+pythonVersion = "3.12"
+include = ["src"]
+typeCheckingMode = "strict"
+
+reportImplicitOverride = "warning"
+reportUnusedVariable = false
+
+[tool.ruff]
+target-version = "py312"
+respect-gitignore = true
+# fix = true
+src = ["src/html_word_count"]
+line-length = 100
+output-format = "full"
+
+[tool.ruff.lint]
+select = [
+    "RUF",
+    "F",
+    "E",
+    "W",
+    "I",
+    "UP",
+    "B",
+    "Q",
+    "YTT",
+    "PYI",
+    "SIM",
+    "RET",
+    "PERF",
+    "PIE",
+    "SIM",
+    "C4",
+]
+ignore = [
+    "W291",
+    "W293",
+]
+
+[tool.ruff.lint.per-file-ignores]
+"tests/test_*" = ["D"]
+
+[tool.ruff.lint.isort]
+combine-as-imports = true
