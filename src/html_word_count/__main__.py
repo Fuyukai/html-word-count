@@ -23,9 +23,9 @@ def get_word_count(tree: _ElementTree, xpath: str) -> int:
 
     selected = tree.xpath(xpath)
     if not selected:
-        selected = tree.getroot().getchildren()
+        selected = tree.xpath("//body")
 
-    stack = deque(*selected)
+    stack = deque(selected)
     word_count = 0
     # "recursively" get all text
     while stack:
@@ -56,7 +56,7 @@ def main() -> None:
     parser.add_argument("FILES", nargs="*", help="The list of files to count words from")
 
     args = parser.parse_args()
-    xpath: str = args.xpath
+    xpath: str = args.xpath.strip()
 
     files: list[FileOpener] = []
 
